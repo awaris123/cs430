@@ -1,6 +1,8 @@
 
 from Sort import SortingMachine
 from Test import TestMachine, TestResults
+import sys
+sys.setrecursionlimit(15000)
 
 if __name__ == "__main__":
     quickSortResults = TestResults("Quick Sort")

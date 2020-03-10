@@ -6,18 +6,21 @@ class TestMachine:
 
     @staticmethod
     def timeIt(func, data):
-        start = ((time.time() * 1000))
-        func(data)
-        stop = ((time.time() * 1000))
-
-        return (stop-start), len(data)
+        avgTime = 0
+        for _ in range(3):
+            start = ((time.time() * 1000))
+            func(data)
+            stop = ((time.time() * 1000))
+            avgTime += stop-start
+        avgTime = avgTime / 3
+        return avgTime, len(data)
 
 
     @staticmethod
     def createBatch():
         def genTest(size=100):
             return [random.randint(-9999, 9999)for _ in range(size)]
-        return [genTest(size) for size in range(0, 100000, 10000)]
+        return [genTest(size) for size in range(0, 10000, 1000)]
 
 
 class TestResults:
